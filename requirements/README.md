@@ -8,5 +8,5 @@ Interactions with the Elasticsearch API are illustrated using [cURL]()
 
 ## Grab the repo
 ```bash
-$ git clone https://github.com/mapbutcher/el-spatial-tutorial.git
+$ git clone https://github.com/geoplex/elasticsearch-spatial
 ```
