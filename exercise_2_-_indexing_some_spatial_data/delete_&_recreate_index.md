@@ -1,6 +1,6 @@
 # Delete & Recreate Index
 
-Ok now we want to remove our suburbs index and recreate it, this time using our modified mapping. This will enable us to load the suburb shapefile into and Elasticsearch will recognise and index the geometry correctly.
+Ok now we want to remove our suburbs index and recreate it, this time using our modified mapping. This will enable us to load the suburb shapefile and Elasticsearch will recognise and index the geometry correctly.
 
 Delete the index
 ```bash

@@ -72,6 +72,7 @@ class loader:
                 cnt=1
                 for f in source:
 
+                    print f
                     if(cnt > limit):
                         return
 
@@ -91,6 +92,7 @@ class loader:
                         if (self.validateGeometry(geom)):
                             data = json.dumps(f)
                             key = f[keyField]
+
                             self.conn.index(data,esindex,estype,key)
                             
                         else:
