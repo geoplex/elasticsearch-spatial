@@ -25,14 +25,7 @@ We need to update the mapping to tell Elasticsearch that the coordinates field i
 
 ```bash
 "geometry" : {
-            "properties" : {
-              "coordinates" : {
-                "type" : "geo_shape"
-              },
-              "type" : {
-                "type" : "string"
-              }
-            }
+    "type": "geo_shape"
           }
 ```
 

@@ -1,52 +1,45 @@
 {
-      "suburb" : {
-        "properties" : {
-          "geometry" : {
-            "properties" : {
-              "coordinates" : {
-                "type" : "geo_shape"
-              },
-              "type" : {
-                "type" : "string"
-              }
+    "suburb": {
+        "properties": {
+            "geometry": {
+                "type": "geo_shape"
+            },
+            "id": {
+                "type": "string"
+            },
+            "properties": {
+                "properties": {
+                    "GAZLOC": {
+                        "type": "string"
+                    },
+                    "LOCALITY": {
+                        "type": "string"
+                    },
+                    "PFI": {
+                        "type": "string"
+                    },
+                    "PFI_CR": {
+                        "type": "date",
+                        "format": "dateOptionalTime"
+                    },
+                    "UFI": {
+                        "type": "long"
+                    },
+                    "UFI_CR": {
+                        "type": "date",
+                        "format": "dateOptionalTime"
+                    },
+                    "UFI_OLD": {
+                        "type": "long"
+                    },
+                    "VICNAMESID": {
+                        "type": "long"
+                    }
+                }
+            },
+            "type": {
+                "type": "string"
             }
-          },
-          "id" : {
-            "type" : "string"
-          },
-          "properties" : {
-            "properties" : {
-              "GAZLOC" : {
-                "type" : "string"
-              },
-              "LOCALITY" : {
-                "type" : "string"
-              },
-              "PFI" : {
-                "type" : "string"
-              },
-              "PFI_CR" : {
-                "type" : "date",
-                "format" : "dateOptionalTime"
-              },
-              "UFI" : {
-                "type" : "long"
-              },
-              "UFI_CR" : {
-                "type" : "date",
-                "format" : "dateOptionalTime"
-              },
-              "UFI_OLD" : {
-                "type" : "long"
-              },
-              "VICNAMESID" : {
-                "type" : "long"
-              }
-            }
-          },
-          "type" : {
-            "type" : "string"
-          }
         }
-      }
     }
+}

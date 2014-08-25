@@ -51,7 +51,7 @@ class loader:
         logging.info('Simplifying Geometry') 
         return geom.simplify(tolerance, preserve_topology=False)
 
-    def processData(self,esindex, estype,  shpPath, keyField, geomField, simplify, tolerance, startfrom, limit):
+    def processData(self,esindex, estype,  shpPath, keyField, simplify, tolerance, startfrom, limit):
         
 
         # Open a file for reading
@@ -72,7 +72,6 @@ class loader:
                 cnt=1
                 for f in source:
 
-                    print f
                     if(cnt > limit):
                         return
 
@@ -81,7 +80,7 @@ class loader:
                     
                         #grab the geom
                         from shapely.geometry import shape
-                        geom = shape(f[geomField])
+                        geom = shape(f['geometry'])
 
                         #simplify if required
                         if (self.validateGeometry(geom)):
@@ -111,7 +110,6 @@ if __name__ == '__main__':
         parser.add_argument('estype', metavar='estype', type=str, help='The elastic search type your loading into')
         parser.add_argument('shpPath', metavar='shpPath', type=str, help='Path to the shapefile')
         parser.add_argument('keyField', metavar='keyField', type=str, help='Primary key field name')
-        parser.add_argument('geomField', metavar='geomField', type=str, help='Geometry field name')
 
         parser.add_argument('--simplify', action='store_true', help='Whether to simplify the geometry')
         parser.add_argument('--tolerance', metavar='tolerance', type=float, help='simplification tolerance distance')
@@ -126,11 +124,10 @@ if __name__ == '__main__':
         estype = args.estype
         shpPath = args.shpPath
         keyField = args.keyField
-        geomField = args.geomField
         simplify = args.simplify
         tolerance = args.tolerance
         startfrom = args.startfrom
         limit = args.limit
 
         loader = loader(esurl)
-        loader.processData(esindex, estype, shpPath, keyField, geomField, simplify, tolerance, startfrom, limit)
+        loader.processData(esindex, estype, shpPath, keyField, simplify, tolerance, startfrom, limit)
