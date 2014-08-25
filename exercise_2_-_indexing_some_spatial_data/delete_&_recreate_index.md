@@ -12,5 +12,5 @@ curl -XPUT 'http://127.0.01:9200/suburbs/'
 ```
 Add the updated mapping
 ```bash
-curl -XPUT '127.0.01:9200/suburbs/suburb/_mapping' --data @mapping.json
+curl -XPUT '127.0.01:9200/suburbs/_mapping/suburb' --data @mapping.json
 ```
