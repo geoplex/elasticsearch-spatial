@@ -25,7 +25,7 @@ $ python data-loader.py -h
 To load a single suburb record you can use:
 
 ```bash
-python data-loader.py '127.0.0.1:9200' 'suburbs'  'suburb' '../exercise_data//Victorian-Localities/locality_polygon.shp' 'id' 'geometry' --limit 1
+python data-loader.py '127.0.0.1:9200' 'suburbs'  'suburb' '../exercise_data//Victorian-Localities/locality_polygon.shp' 'id' --limit 1
 ```
 
 The --limit optional argument specifies the number of records to load, in this case we only want to load one record.
