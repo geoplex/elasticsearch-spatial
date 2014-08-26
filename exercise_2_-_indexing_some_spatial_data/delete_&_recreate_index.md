@@ -14,3 +14,10 @@ Add the updated mapping
 ```bash
 curl -XPUT '127.0.01:9200/suburbs/_mapping/suburb' --data @mapping.json
 ```
+
+Finally load in all the suburbs..
+```bash
+python data-loader.py '127.0.0.1:9200' 'suburbs'  'suburb' '../exercise_data/Melbourne-Localities/melbourne_locality_polygon.shp' 'id' --limit 1000
+```
+While the load is running you can monitor the application behaviour by using the head, paramedic or bigdesk plugins.
+
