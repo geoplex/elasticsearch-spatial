@@ -1,0 +1,135 @@
+{
+      "accident" : {
+        "properties" : {
+          "geometry" : {
+            "type" : "geo_shape"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "properties" : {
+            "properties" : {
+              "accident_1" : {
+                "type" : "double"
+              },
+              "accident_3" : {
+                "type" : "string"
+              },
+              "accident_d" : {
+                "type" : "string"
+              },
+              "accident_n" : {
+                "type" : "string"
+              },
+              "accident_t" : {
+                "type" : "string"
+              },
+              "bike" : {
+                "type" : "double"
+              },
+              "cartodb_id" : {
+                "type" : "long"
+              },
+              "complex_in" : {
+                "type" : "double"
+              },
+              "created_at" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "day_of_w_1" : {
+                "type" : "string"
+              },
+              "day_of_wee" : {
+                "type" : "double"
+              },
+              "dca_code" : {
+                "type" : "double"
+              },
+              "edition" : {
+                "type" : "string"
+              },
+              "grid_ref_1" : {
+                "type" : "double"
+              },
+              "grid_refer" : {
+                "type" : "string"
+              },
+              "light_cond" : {
+                "type" : "double"
+              },
+              "locals_inv" : {
+                "type" : "string"
+              },
+              "located_mi" : {
+                "type" : "string"
+              },
+              "location" : {
+                "type" : "string"
+              },
+              "location_t" : {
+                "type" : "string"
+              },
+              "no_of_vehi" : {
+                "type" : "double"
+              },
+              "no_perso_1" : {
+                "type" : "double"
+              },
+              "no_perso_2" : {
+                "type" : "double"
+              },
+              "no_perso_3" : {
+                "type" : "double"
+              },
+              "no_perso_4" : {
+                "type" : "double"
+              },
+              "no_perso_5" : {
+                "type" : "double"
+              },
+              "no_persons" : {
+                "type" : "double"
+              },
+              "node_id" : {
+                "type" : "double"
+              },
+              "node_type" : {
+                "type" : "string"
+              },
+              "objectid" : {
+                "type" : "string"
+              },
+              "pedestrian" : {
+                "type" : "double"
+              },
+              "police_att" : {
+                "type" : "double"
+              },
+              "road_geome" : {
+                "type" : "double"
+              },
+              "road_route" : {
+                "type" : "double"
+              },
+              "severity" : {
+                "type" : "double"
+              },
+              "speed_zone" : {
+                "type" : "double"
+              },
+              "unknown" : {
+                "type" : "double"
+              },
+              "updated_at" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              }
+            }
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
