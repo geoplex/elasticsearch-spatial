@@ -5,7 +5,7 @@ Now we've ran through each of the individual steps to load suburb information yo
 Create new accident index and load in pre-configured accident mapping.
 ```bash
 curl -XPUT 'http://127.0.01:9200/accidents/'
-curl -XPUT '127.0.01:9200/accidents/_mapping/accident' --data @accident_mapping.json
+curl -XPUT '127.0.01:9200/accidents/_mapping/accident' --data @/mappings/accident_mapping.json
 ```
 
 Load in the accident data using the python data loader (remember to configure your virtualenv if you've haven't done so already)

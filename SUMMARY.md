@@ -11,5 +11,6 @@
    * [Delete & Recreate Index](exercise_2_-_indexing_some_spatial_data/delete_&_recreate_index.md)
    * [Load Accidents](exercise_2_-_indexing_some_spatial_data/load_accidents.md)
 * [Query](query/README.md)
+   * [Geo Shape Filter](query/geo_shape_filter.md)
    * [Geo Shape Filter - Pre-Indexed](query/pre-indexed_geo_shape_query.md)
 

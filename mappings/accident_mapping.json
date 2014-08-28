@@ -2,10 +2,13 @@
       "accident" : {
         "properties" : {
           "geometry" : {
-            "type" : "geo_shape"
+            "type": "geo_shape"
           },
           "id" : {
             "type" : "string"
+          },
+          "point_location" : {
+            "type" : "geo_point"
           },
           "properties" : {
             "properties" : {
