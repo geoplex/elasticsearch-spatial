@@ -51,7 +51,7 @@ class loader:
         logging.info('Simplifying Geometry') 
         return geom.simplify(tolerance, preserve_topology=False)
 
-    def processData(self,esindex, estype,  shpPath, keyField, simplify, tolerance, startfrom, limit):
+    def processData(self,esindex, estype,  shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint):
         
 
         # Open a file for reading
@@ -71,7 +71,7 @@ class loader:
 
                 cnt=1
                 for f in source:
-                    
+
                     if(cnt > limit):
                         return
 
@@ -89,9 +89,16 @@ class loader:
                         
                         #if the geom is valid then push it into es
                         if (self.validateGeometry(geom)):
+
+                            # add point to data
+                            print addPoint
+                            if(addPoint==True):
+                                pnt = geom.representative_point()
+                                pnt_dict = {'point_location': '{0},{1}'.format(pnt.x,pnt.y)}
+                                f.update(pnt_dict)
+                            
                             data = json.dumps(f)
                             key = f[keyField]
-
                             self.conn.index(data,esindex,estype,key)
                             
                         else:
@@ -106,15 +113,18 @@ if __name__ == '__main__':
         #grab the args
         parser = argparse.ArgumentParser(description='Load data into Elastic Search')
         parser.add_argument('esurl', metavar='rooturl', type=str, help='Root url of elastic search, including index and type')
-        parser.add_argument('esindex', metavar='esindex', type=str, help='The elastic search index you are loading into')
-        parser.add_argument('estype', metavar='estype', type=str, help='The elastic search type your loading into')
+        parser.add_argument('esindex', metavar='esindex', type=str, help='The elasticsearch index you are loading into')
+        parser.add_argument('estype', metavar='estype', type=str, help='The elasticsearch type your loading into')
         parser.add_argument('shpPath', metavar='shpPath', type=str, help='Path to the shapefile')
         parser.add_argument('keyField', metavar='keyField', type=str, help='Primary key field name')
+        
+
 
         parser.add_argument('--simplify', action='store_true', help='Whether to simplify the geometry')
         parser.add_argument('--tolerance', metavar='tolerance', type=float, help='simplification tolerance distance')
         parser.add_argument('--startfrom', metavar='startfrom', type=int, help='an index to start the load from')
         parser.add_argument('--limit', metavar='limit', type=int, help='record limit')
+        parser.add_argument('--addPoint', action='store_false', help='Push a representative point into elasticsearch')
 
 
         args = parser.parse_args()
@@ -128,6 +138,7 @@ if __name__ == '__main__':
         tolerance = args.tolerance
         startfrom = args.startfrom
         limit = args.limit
+        addPoint = args.addPoint
 
         loader = loader(esurl)
-        loader.processData(esindex, estype, shpPath, keyField, simplify, tolerance, startfrom, limit)
+        loader.processData(esindex, estype, shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint)

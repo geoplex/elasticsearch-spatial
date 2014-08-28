@@ -7,6 +7,9 @@
             "id": {
                 "type": "string"
             },
+            "point_location" : {
+                "type" : "geo_point"
+            },
             "properties": {
                 "properties": {
                     "GAZLOC": {
