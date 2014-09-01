@@ -4,7 +4,7 @@ To run this tutorial you'll need to install [virtualbox](https://www.virtualbox.
 
 I also recommend using the [Sense](https://chrome.google.com/webstore/detail/sense/doinijnbnggojdlcjifpdckfokbbfpbo?hl=en) extension for Chrome which provides a JSON aware interface to Elasticsearch.
 
-Interactions with the Elasticsearch API are illustrated using [cURL]()
+Interactions with the Elasticsearch API are illustrated using [cURL](http://curl.haxx.se/)
 
 ## Grab the repo
 ```bash

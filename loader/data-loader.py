@@ -91,7 +91,7 @@ class loader:
                         if (self.validateGeometry(geom)):
 
                             # add point to data
-                            print addPoint
+                           
                             if(addPoint==True):
                                 pnt = geom.representative_point()
                                 pnt_dict = {'point_location': '{0},{1}'.format(pnt.x,pnt.y)}
