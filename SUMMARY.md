@@ -13,4 +13,6 @@
 * [Query](query/README.md)
    * [Geo Shape Filter](query/geo_shape_filter.md)
    * [Geo Shape Filter - Pre-Indexed](query/pre-indexed_geo_shape_query.md)
+   * [Geo Distance Filter](query/geo_distance_filter.md)
+   * [Geo Distance Aggregation](aggregation/README.md)
 
