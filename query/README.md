@@ -1,1 +1,3 @@
 # Query
+
+We now have suburb and accident data loaded into our elasticsearch instance, we should query it...
