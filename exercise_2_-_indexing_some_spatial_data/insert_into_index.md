@@ -9,6 +9,10 @@ Before running the loader - lets make sure we have the dependencies we need.
 ```bash
 $ virtualenv LOADER
 $ source LOADER/bin/activate
+$ pip install numpy
+$ brew create http://download.savannah.gnu.org/releases/lzip/lzlib-1.5.tar.gz
+$ brew install lzlib
+$ brew install gdal
 $ pip install pyes
 $ pip install fiona
 $ pip install shapely

@@ -3,12 +3,11 @@
 Firstly lets get the initial exercise ready.
 ```bash
 $ cd el-spatial-tutorial
-$ git checkout tags/1.0.0
 ```
 
-OK now we need to create a virtual machine and install Elasticsearch. With vagrant this is easy. However the first time you do this Vagrant needs to do two things:
+OK now we need to create a virtual machine and install Elasticsearch. With vagrant this is easy. The vagrant script provided with this tutorial uses a base box named *precise32*. Vagrant box is a pre-packaged environment. However the first time you do this Vagrant needs to do two things:
 
-+ pull down a base machine
++ pull down a base machine (i.e., [vagrant box](https://docs.vagrantup.com/v2/boxes.html))
 + provision the base machine with Elasticsearch.
 
 so it takes a little longer. To do these things run:
@@ -17,7 +16,7 @@ $ vagrant box add precise32 http://files.vagrantup.com/precise32.box
 $ vagrant up
 ```
 
-During the installation vagrant provisioned the machine with Elasticsearch and some useful plugins:
+During the installation vagrant provisions the machine with Elasticsearch, Kibana and some useful plugins:
 + [Paramedic](https://github.com/karmi/elasticsearch-paramedic)
 + [Head](http://mobz.github.io/elasticsearch-head/)
 + [BigDesk](https://github.com/lukas-vlcek/bigdesk)
