@@ -1,6 +1,6 @@
 # Load Accidents
 
-Now we've ran through each of the individual steps to load suburb information yoi can execute the below script to run accidents in to a new index.
+Now we've ran through each of the individual steps to load suburb information you can execute the below script to load accidents into a new index.
 
 Create new accident index and load in pre-configured accident mapping.
 ```bash
