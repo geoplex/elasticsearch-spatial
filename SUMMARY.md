@@ -10,7 +10,7 @@
    * [Retrieve the Index Mapping](exercise_2_-_indexing_some_spatial_data/retrieve_the_index_mapping.md)
    * [Delete & Recreate Index](exercise_2_-_indexing_some_spatial_data/delete_&_recreate_index.md)
    * [Load Accidents](exercise_2_-_indexing_some_spatial_data/load_accidents.md)
-* [Query](query/README.md)
+* [Exercise 3 - Query](query/README.md)
    * [Geo Shape Filter](query/geo_shape_filter.md)
    * [Geo Shape Filter - Pre-Indexed](query/pre-indexed_geo_shape_query.md)
    * [Geo Distance Filter](query/geo_distance_filter.md)
