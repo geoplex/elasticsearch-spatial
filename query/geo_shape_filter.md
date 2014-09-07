@@ -1,8 +1,6 @@
 # Geo Shape Filter
 
-Elasticsearch allows us to filter data using a Geo Shape filter.
-
-You can use the [Sense](https://chrome.google.com/webstore/detail/sense/doinijnbnggojdlcjifpdckfokbbfpbo?hl=en) plugin to do this. Or [cURL](http://curl.haxx.se/)
+Elasticsearch allows us to query data using a Geo Shape filter. For example if we wanted to identify all accidents which occurred within a particular area we can make the following query:
 
 ```bash
 curl -XPOST 'http://127.0.01:9200/accidents/_search' -d '{
@@ -48,7 +46,7 @@ curl -XPOST 'http://127.0.01:9200/accidents/_search' -d '{
     }
 }' | python -m json.tool
 ```
-In the above example we're asking for any accidents which intersect with a basic polygon. This yields 3401 accidents and Elasticsearch took 30ms to process the request.:
+In the above example we're asking for any accidents which intersect with a basic polygon. This yields 3401 accidents and Elasticsearch took 30ms to process the request:
 
 ```javascript
 {
@@ -66,4 +64,4 @@ In the above example we're asking for any accidents which intersect with a basic
     }
 }
 ```
-Using this type of filter is useful if you want to pass arbitary geometries to Elasticsearch. For example this filter could be used to return all accidents within the bounding box on a map. Another way of doing this would be to use the [Geo Bounding Box](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-geo-bounding-box-filter.html) filter
+Using this type of filter is useful if you want to pass arbitrary geometries to Elasticsearch. For example this filter could be used to return all accidents within the bounding box on a map. Another way of doing this would be to use the [Geo Bounding Box](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-geo-bounding-box-filter.html) filter

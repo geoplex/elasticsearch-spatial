@@ -20,3 +20,5 @@ curl -XPOST 'http://127.0.01:9200/accidents/_search' -d '{
     }
 }' | python -m json.tool
 ```
+
+Can we sort by distance?

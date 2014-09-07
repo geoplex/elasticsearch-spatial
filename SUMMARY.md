@@ -7,7 +7,7 @@
 * [Exercise 2 - Indexing](exercise_2_-_indexing_some_spatial_data/README.md)
    * [Create Index](exercise_2_-_indexing_some_spatial_data/create_index.md)
    * [Insert Into Index](exercise_2_-_indexing_some_spatial_data/insert_into_index.md)
-   * [Retrieve the Index Mapping](exercise_2_-_indexing_some_spatial_data/retrieve_the_index_mapping.md)
+   * [Update Mapping](exercise_2_-_indexing_some_spatial_data/retrieve_the_index_mapping.md)
    * [Delete & Recreate Index](exercise_2_-_indexing_some_spatial_data/delete_&_recreate_index.md)
    * [Load Accidents](exercise_2_-_indexing_some_spatial_data/load_accidents.md)
 * [Exercise 3 - Query](query/README.md)
@@ -16,4 +16,5 @@
    * [Geo Distance Filter](query/geo_distance_filter.md)
    * [Geo Distance Aggregation](aggregation/README.md)
    * [Geo Bounds Aggregation](query/geo_bounds_aggregation.md)
+* [Exercise 4 - Managing Data](exercise_4_-_managing_data/README.md)
 
