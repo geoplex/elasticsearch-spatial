@@ -1,0 +1,19 @@
+POST /accidents/_search
+{
+   "query": {
+      "filtered": {
+         "query": {
+            "match_all": {}
+         },
+         "filter": {
+            "geo_distance": {
+               "distance": "0.5km",
+               "accident.point_location": {
+                  "lat": 144.97959,
+                  "lon": -37.79845
+               }
+            }
+         }
+      }
+   }
+}

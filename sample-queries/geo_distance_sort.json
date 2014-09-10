@@ -1,0 +1,19 @@
+POST /accidents/_search
+{
+      "size": 10, 
+      "sort": [
+         {
+            "_geo_distance": {
+               "accident.point_location": {
+                  "lat": 144.97959,
+                  "lon": -37.79845
+               },
+               "order": "asc",
+               "unit": "m"
+            }
+         }
+      ],
+      "query": {
+         "match_all": {}
+      }
+}
