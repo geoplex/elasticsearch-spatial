@@ -1,15 +1,45 @@
 #!/usr/bin/env bash
 
 # Update the environment and install helpful tools.
+sudo grub-install /dev/sda
+sudo update-grub
+# sudo apt-get -y install grub-pc
+sudo apt-get install python-software-properties -y
+sudo apt-add-repository ppa:ubuntugis/ppa -y
 sudo apt-get update
+#sudo apt-get upgrade gcc -y
 sudo apt-get install curl -y
 sudo apt-get install vim -y
+sudo apt-get install python-dev -y
+sudo apt-get install python-virtualenv -y
+sudo apt-get install gdal-bin -y
+sudo apt-get install git -y
+sudo apt-get install unzip -y
 
 # Install a java runtime for elastic search.
 sudo apt-get install openjdk-7-jre-headless -y
 
-# Install python modules.
-sudo apt-get install python-virtualenv -y
+# Checkout tutorial project
+
+mkdir es-tutorial
+cd es-tutorial/
+git clone https://github.com/geoplex/elasticsearch-spatial.git
+ls
+cd elasticsearch-spatial/
+# Install python modules for loading data.
+virtualenv LOADER
+source LOADER/bin/activate
+pip install numpy
+pip install cython
+pip install fiona
+pip install pyes
+pip install shapely
+
+# Unzip tutorial data.
+cd exercise_data/
+unzip Melbourne-Localities.zip
+unzip Melbourne_accident.zip
+cd ../..
 
 # Install elastic search and necessary plugins.
 mkdir elasticsearch
@@ -42,4 +72,3 @@ sudo mv /etc/nginx/sites-available/default ~/nginx-default-config
 sudo cp /vagrant/provision/config/kibana.nginx-config /etc/nginx/sites-available/kibana
 sudo ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
 sudo service nginx restart
-
