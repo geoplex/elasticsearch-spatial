@@ -1,0 +1,29 @@
+POST /accidents/_search
+{
+   "size": 0,
+   "aggs": {
+      "rings": {
+         "geo_distance": {
+            "field": "point_location",
+            "origin": "144.97959, -37.79845",
+            "unit": "m",
+            "ranges": [
+               {
+                  "to": 100
+               },
+               {
+                  "from": 100,
+                  "to": 300
+               }
+            ]
+         },
+         "aggs": {
+            "days": {
+               "terms": {
+                  "field": "day_of_w_1"
+               }
+            }
+         }
+      }
+   }
+}
