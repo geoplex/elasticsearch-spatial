@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
 # Update the environment and install helpful tools.
+sudo apt-get update
 sudo grub-install /dev/sda
 sudo update-grub
-# sudo apt-get -y install grub-pc
 sudo apt-get install python-software-properties -y
-sudo apt-add-repository ppa:ubuntugis/ppa -y
+sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
-#sudo apt-get upgrade gcc -y
 sudo apt-get install curl -y
 sudo apt-get install vim -y
+sudo apt-get install build-essential python-all-dev -y
 sudo apt-get install python-dev -y
 sudo apt-get install python-virtualenv -y
-sudo apt-get install gdal-bin -y
+sudo apt-get install gdal-bin python-gdal -y
+sudo apt-get install libgdal1-dev -y
 sudo apt-get install git -y
 sudo apt-get install unzip -y
+sudo apt-get install cython -y
 
 # Install a java runtime for elastic search.
 sudo apt-get install openjdk-7-jre-headless -y
@@ -22,6 +24,7 @@ sudo apt-get install openjdk-7-jre-headless -y
 # Checkout tutorial project
 
 mkdir es-tutorial
+
 cd es-tutorial/
 git clone https://github.com/geoplex/elasticsearch-spatial.git
 ls
@@ -37,13 +40,16 @@ pip install shapely
 
 # Unzip tutorial data.
 cd exercise_data/
+
 unzip Melbourne-Localities.zip
 unzip Melbourne_accident.zip
-cd ../..
+cd .. # Exist exercise_data/
+cd .. # Exit elasticsearch-spatial/
+sudo chown -R vagrant:vagrant ./
 
 # Install elastic search and necessary plugins.
-mkdir elasticsearch
-cd elasticsearch
+mkdir /elasticsearch
+cd ~/elasticsearch
 wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.2.deb
 sudo dpkg -i elasticsearch-1.2.2.deb
 
@@ -52,9 +58,9 @@ sudo update-rc.d elasticsearch defaults 95 10
 sudo /etc/init.d/elasticsearch start
 
 # -- Install Elastic Search plugins
-sudo /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
-sudo /usr/share/elasticsearch/bin/plugin -install karmi/elasticsearch-paramedic
-sudo /usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
+/usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
+/usr/share/elasticsearch/bin/plugin -install karmi/elasticsearch-paramedic
+/usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
 
 # Setup Nginx
 sudo apt-get install nginx -y 
