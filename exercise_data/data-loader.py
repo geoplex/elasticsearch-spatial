@@ -22,23 +22,27 @@ class loader:
 
     def __init__(self,esurl):
         #open the es connection
+        self.url = esurl
         self.conn = pyes.ES(esurl, timeout=60, bulk_size=10)
 
 
 
     #loads single records over http using urllib2
-    def simpleHttpLoad(esurl, f):
+    def simpleHttpLoad(self, esurl, id, query):
 
         try:
-            logging.info('Pushing to: '+ esurl+f['id']) 
             opener = urllib2.build_opener(urllib2.HTTPHandler)
-            request = urllib2.Request(esurl+f['id'], data=json.dumps(f))
+            request = urllib2.Request(esurl+id, data=query)
             request.add_header('Content-Type', 'application/json')
             request.get_method = lambda: 'PUT'
             url = opener.open(request)
         except Exception as e:
             logging.error(e)
 
+    def createPercolator(self, url, key, geometry):
+
+        query = '{"query": {"geo_shape": {"location": {"shape": '+geometry+' } } }, "type": "location"}'
+        self.simpleHttpLoad(url,key,query)
 
     def validateGeometry(self, geom):
         from shapely.validation import explain_validity
@@ -51,7 +55,7 @@ class loader:
         logging.info('Simplifying Geometry') 
         return geom.simplify(tolerance, preserve_topology=False)
 
-    def processData(self,esindex, estype,  shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint):
+    def processData(self,esindex, estype,  shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint, createPercolator,percolatorkey):
         
 
         # Open a file for reading
@@ -91,7 +95,6 @@ class loader:
                         if (self.validateGeometry(geom)):
 
                             # add point to data
-                           
                             if(addPoint==True):
                                 pnt = geom.representative_point()
                                 pnt_dict = {'point_location': '{0},{1}'.format(pnt.x,pnt.y)}
@@ -99,7 +102,18 @@ class loader:
                             
                             data = json.dumps(f)
                             key = f[keyField]
-                            self.conn.index(data,esindex,estype,key)
+
+                            #normal index
+                            if(createPercolator!=True):
+                                self.conn.index(data,esindex,estype,key)
+
+                            #percolator
+                            if(createPercolator==True):
+                                suburbkey = f["properties"][percolatorkey].replace(" ", "_")
+                                geomAsJson=json.dumps(f['geometry'])
+                                url = "http://{0}/{1}/.percolator/".format(self.url,esindex)
+                                self.createPercolator(url,suburbkey,geomAsJson)
+                            
                             
                         else:
                             logging.error('Invalid Geometry: ' + f[keyField]) 
@@ -124,7 +138,9 @@ if __name__ == '__main__':
         parser.add_argument('--tolerance', metavar='tolerance', type=float, help='simplification tolerance distance')
         parser.add_argument('--startfrom', metavar='startfrom', type=int, help='an index to start the load from')
         parser.add_argument('--limit', metavar='limit', type=int, help='record limit')
-        parser.add_argument('--addPoint', action='store_false', help='Push a representative point into elasticsearch')
+        parser.add_argument('--addPoint', action='store_true', help='Push a representative point into elasticsearch')
+        parser.add_argument('--createPercolator', action='store_true', help='Create a percolator index')
+        parser.add_argument('--percolatorkey', type=str, help='Percolator key')
 
 
         args = parser.parse_args()
@@ -139,6 +155,8 @@ if __name__ == '__main__':
         startfrom = args.startfrom
         limit = args.limit
         addPoint = args.addPoint
+        createPercolator = args.createPercolator
+        percolatorkey = args.percolatorkey
 
         loader = loader(esurl)
-        loader.processData(esindex, estype, shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint)
+        loader.processData(esindex, estype, shpPath, keyField, simplify, tolerance, startfrom, limit, addPoint, createPercolator, percolatorkey)
