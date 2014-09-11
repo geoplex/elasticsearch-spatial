@@ -1,0 +1,13 @@
+POST /suburbs_p/location/_percolate
+{
+   "doc": {
+      "name": "Foo",
+      "location": {
+         "type": "point",
+         "coordinates": [
+            144.97017860412595,
+            -37.80734273233309
+         ]
+      }
+   }
+}
