@@ -10,6 +10,9 @@
             "point_location" : {
                 "type" : "geo_point"
             },
+            "point_location_bettermap" : {
+                "type" : "geo_point"
+            },
             "properties": {
                 "properties": {
                     "GAZLOC": {
