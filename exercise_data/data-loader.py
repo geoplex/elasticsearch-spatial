@@ -96,6 +96,8 @@ class loader:
                                 pnt = geom.representative_point()
                                 pnt_dict = {'point_location': '{0},{1}'.format(pnt.x,pnt.y)}
                                 f.update(pnt_dict)
+                                pnt_dict_bettermap = {'point_location_bettermap': [pnt.x,pnt.y]}
+                                f.update(pnt_dict_bettermap)
                             
                             data = json.dumps(f)
                             key = f[keyField]
