@@ -140,7 +140,7 @@ if __name__ == '__main__':
         parser.add_argument('--tolerance', metavar='tolerance', type=float, help='simplification tolerance distance')
         parser.add_argument('--startfrom', metavar='startfrom', type=int, help='an index to start the load from')
         parser.add_argument('--limit', metavar='limit', type=int, help='record limit')
-        parser.add_argument('--addPoint', action='store_true', help='Push a representative point into elasticsearch')
+        parser.add_argument('--addPoint', action='store_false', help='Push a representative point into elasticsearch')
         parser.add_argument('--createPercolator', action='store_true', help='Create a percolator index')
         parser.add_argument('--percolatorkey', type=str, help='Percolator key')
 
